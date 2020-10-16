@@ -1,14 +1,14 @@
 package internal
 
 import (
-	"data_server/internal/config"
-	"data_server/internal/repository"
-	"data_server/internal/service"
+	"github.com/tonquangtu/data_server/internal/config"
+	"github.com/tonquangtu/data_server/internal/repository"
+	"github.com/tonquangtu/data_server/internal/service"
 )
 
 type Container struct {
 	Configuration config.Configuration
-	UserService service.UserService
+	UserService   service.UserService
 }
 
 func NewContainer() (*Container, error) {
@@ -23,6 +23,6 @@ func NewContainer() (*Container, error) {
 
 	return &Container{
 		Configuration: configuration,
-		UserService: userService,
+		UserService:   userService,
 	}, nil
 }

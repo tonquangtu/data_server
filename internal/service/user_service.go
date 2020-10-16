@@ -1,8 +1,8 @@
 package service
 
 import (
-	"data_server/internal/model"
-	"data_server/internal/repository"
+	"github.com/tonquangtu/data_server/internal/model"
+	"github.com/tonquangtu/data_server/internal/repository"
 )
 
 type UserService interface {

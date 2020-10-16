@@ -1,8 +1,8 @@
 package main
 
 import (
-	"data_server/internal"
 	"fmt"
+	"github.com/tonquangtu/data_server/internal"
 	"net"
 	"net/rpc"
 	"net/rpc/jsonrpc"
@@ -33,5 +33,3 @@ func main() {
 		go server.ServeCodec(jsonrpc.NewServerCodec(conn))
 	}
 }
-
-

@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"data_server/internal/model"
+	"github.com/tonquangtu/data_server/internal/model"
 	"gorm.io/gorm"
 )
 
