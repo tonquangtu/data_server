@@ -1,39 +1,36 @@
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`
+DROP TABLE IF EXISTS public.user;
+CREATE TABLE public.user
 (
-    `id`                bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `username`          varchar(64)         NOT NULL COMMENT 'Username',
-    `password_hash`     varchar(255)        NOT NULL COMMENT 'Hash of password',
-    `created_at`        bigint(20) unsigned NOT NULL COMMENT 'Created at',
-    `updated_at`        bigint(20) unsigned NOT NULL COMMENT 'Updated at',
-    `deleted_at`        bigint(20) unsigned NOT NULL COMMENT 'Deleted at',
-    PRIMARY KEY (`id`)
-) DEFAULT CHARSET = utf8;
+    id                serial primary key not null ,
+    username          varchar(64)         not null,
+    password_hash     varchar(255)        not null,
+    created_at        timestamp not null,
+    updated_at        timestamp not null,
+    deleted_at        timestamp null
+);
 
 
-DROP TABLE IF EXISTS `device`;
-CREATE TABLE `device`
+DROP TABLE IF EXISTS public.device;
+CREATE TABLE public.device
 (
-    `id`                bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `user_id`           bigint(20) unsigned       NOT NULL COMMENT 'User id',
-    `device_name`         varchar(255)        NOT NULL COMMENT 'Device name',
-    `device_detail`     varchar(512) NOT NULL COMMENT 'Device detail',
-    `created_at`        bigint(20) unsigned NOT NULL COMMENT 'Created at',
-    `updated_at`        bigint(20) unsigned NOT NULL COMMENT 'Updated at',
-    `deleted_at`        bigint(20) unsigned NOT NULL COMMENT 'Deleted at',
-    PRIMARY KEY (`id`)
-) DEFAULT CHARSET = utf8;
+    id                serial primary key NOT NULL,
+    user_id           int NOT NULL,
+    device_name       varchar(255) not null,
+    device_detail     varchar(512) not null,
+    created_at        timestamp not null,
+    updated_at        timestamp not null,
+    deleted_at        timestamp null
+);
 
 
-DROP TABLE IF EXISTS `note`;
-CREATE TABLE `note`
+DROP TABLE IF EXISTS public.note;
+CREATE TABLE public.note
 (
-    `id`                bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `user_id`           bigint(20) unsigned         NOT NULL COMMENT 'User id',
-    `device_id`         bigint(20) unsigned        NOT NULL COMMENT 'Device id',
-    `data`              text NOT NULL COMMENT 'Device detail',
-    `created_at`        bigint(20) unsigned NOT NULL COMMENT 'Created at',
-    `updated_at`        bigint(20) unsigned NOT NULL COMMENT 'Updated at',
-    `deleted_at`        bigint(20) unsigned NOT NULL COMMENT 'Deleted at',
-    PRIMARY KEY (`id`)
-) DEFAULT CHARSET = utf8;
+    id                serial primary key not null,
+    user_id           int not null,
+    device_id         int not null,
+    data              text null,
+    created_at        timestamp not null,
+    updated_at        timestamp not null,
+    deleted_at        timestamp null
+);
