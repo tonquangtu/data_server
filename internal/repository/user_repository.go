@@ -3,6 +3,7 @@ package repository
 import (
 	"github.com/tonquangtu/data_server/internal/model"
 	"gorm.io/gorm"
+	"time"
 )
 
 type UserRepository struct {
@@ -20,6 +21,10 @@ func (userRepo *UserRepository) GetUser(id int) (*model.User, error) {
 }
 
 func (userRepo *UserRepository) AddUser(user *model.User) error {
+	if user.CreatedAt.IsZero() {
+		user.CreatedAt = time.Now()
+	}
+	user.UpdatedAt = user.CreatedAt
 	userRepo.db.Create(user)
 	return nil
 }

@@ -19,7 +19,8 @@ func NewContainer() (*Container, error) {
 	}
 
 	userRepository := repository.NewUserRepository(db)
-	userService := service.NewUserService(userRepository)
+	passwordEncoder := service.NewPasswordEncoder()
+	userService := service.NewUserService(userRepository, passwordEncoder)
 
 	return &Container{
 		Configuration: configuration,
