@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/tonquangtu/data_server/internal"
+	"github.com/tonquangtu/data_server/internal/rpc/handler"
 	"net"
 	"net/rpc"
 	"net/rpc/jsonrpc"
@@ -19,7 +20,7 @@ func main() {
 	server := rpc.NewServer()
 
 	// register `mit` object with `server`
-	server.Register(container.UserService)
+	server.Register(handler.NewHandler(container.UserService))
 
 	// create a TCP listener at address : 127.0.0.1:9002
 	// https://golang.org/pkg/net/#Listener
