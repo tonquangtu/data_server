@@ -20,15 +20,15 @@ func (handler *UserHandler) GetUser(id int, result *dto.GetUserDto) error {
 	if err != nil {
 		return err
 	}
-	result = user
+	*result = *user
 	return nil
 }
 
 func (handler *UserHandler) AddUser(userDto dto.AddUserDto, result *dto.AddUserDto) error {
 	err := handler.userService.AddUser(&userDto)
 	if err != nil {
-		return nil
+		return err
 	}
-	result = &userDto
+	*result = userDto
 	return nil
 }

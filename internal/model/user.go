@@ -13,3 +13,6 @@ type User struct {
 	DeletedAt    time.Time
 }
 
+func (User) TableName() string {
+	return "user"
+}
